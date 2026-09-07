@@ -1,0 +1,445 @@
+{
+  "synthetic_workload": true,
+  "synthetic_usage": false,
+  "external_evidence": true,
+  "product_head": "a46f9ff3df8124515a669968c45c22bbd3ec81e3",
+  "version": "no-mistakes version v1.69.0 (a8cf216) 2026-09-07T05:49:09Z",
+  "daemon_identity": {
+    "pid": 2325262,
+    "ppid": 2324850,
+    "start_ticks": 7107182,
+    "cwd": "/home/mantas/.treehouse/firstmate-7bab20/1/firstmate/.no-mistakes/r9",
+    "name": "no-mistakes"
+  },
+  "native_repo": [
+    {
+      "id": "c10a113eba52",
+      "working_path": "/home/mantas/.treehouse/firstmate-7bab20/1/firstmate/.no-mistakes/r9/repo",
+      "upstream_url": "/home/mantas/.treehouse/firstmate-7bab20/1/firstmate/.no-mistakes/r9/origin.git"
+    }
+  ],
+  "helper": [
+    {
+      "operation": [
+        "provision",
+        "fm-lab-resource-v5"
+      ],
+      "code": 0
+    },
+    {
+      "operation": [
+        "run",
+        "fm-lab-resource-v5",
+        "workspace"
+      ],
+      "code": 0
+    },
+    {
+      "operation": [
+        "run",
+        "fm-lab-resource-v5",
+        "pane"
+      ],
+      "code": 0
+    },
+    {
+      "operation": [
+        "run",
+        "fm-lab-resource-v5",
+        "pane"
+      ],
+      "code": 0
+    },
+    {
+      "operation": [
+        "teardown",
+        "fm-lab-resource-v5"
+      ],
+      "code": 0
+    }
+  ],
+  "baseline": {
+    "schema": 1,
+    "started_at": "2026-09-07T16:03:59.217560+00:00",
+    "finished_at": "2026-09-07T16:04:04.294115+00:00",
+    "interval_seconds": 5.00452250399394,
+    "scan_seconds": 0.008775364010944031,
+    "shared_pids_excluded": 0,
+    "scope": "Linux only; sampled CPU/I/O; PSS RAM; current Pi + known validation; partial history",
+    "rows": [
+      {
+        "task": "fixture",
+        "metrics": {
+          "cpu_percent": 0.0,
+          "rss_bytes": 140054528,
+          "pss_bytes": 80844800,
+          "pids": 2,
+          "stable_pids": 2,
+          "pss_covered": 2,
+          "io_covered": 2,
+          "churn": 0,
+          "read_bytes_per_second": 0.0,
+          "write_bytes_per_second": 0.0,
+          "partial": false
+        },
+        "worker_usage": {
+          "totals": null,
+          "partial": true
+        },
+        "validation_usage": {
+          "totals": null,
+          "invocations": 0,
+          "covered": 0,
+          "runs": 0,
+          "active_steps": 0,
+          "partial": true
+        },
+        "known_tokens": null,
+        "token_history": "partial",
+        "possible_usage_overlap": false,
+        "badge": "C0% P77M T?~",
+        "published": false
+      }
+    ]
+  },
+  "active_step": {
+    "id": "01M1Y9SJC5EPMQMK25QJZTS88T",
+    "worktree_dir": "/home/mantas/.treehouse/firstmate-7bab20/1/firstmate/.no-mistakes/r9/n/worktrees/c10a113eba52/01M1Y9SJC5EPMQMK25QJZTS88T",
+    "step_name": "review",
+    "status": "running",
+    "agent_pid": 2329098
+  },
+  "reviewer_before": {
+    "pid": 2329098,
+    "ppid": 2325262,
+    "start_ticks": 7108269,
+    "cwd": "/home/mantas/.treehouse/firstmate-7bab20/1/firstmate/.no-mistakes/r9/n/worktrees/c10a113eba52/01M1Y9SJC5EPMQMK25QJZTS88T",
+    "name": "node"
+  },
+  "during": {
+    "schema": 1,
+    "started_at": "2026-09-07T16:04:05.380198+00:00",
+    "finished_at": "2026-09-07T16:04:10.477322+00:00",
+    "interval_seconds": 5.006924527493538,
+    "scan_seconds": 0.01365004300896544,
+    "shared_pids_excluded": 0,
+    "scope": "Linux only; sampled CPU/I/O; PSS RAM; current Pi + known validation; partial history",
+    "rows": [
+      {
+        "task": "fixture",
+        "metrics": {
+          "cpu_percent": 14.979255147180124,
+          "rss_bytes": 257744896,
+          "pss_bytes": 139165696,
+          "pids": 3,
+          "stable_pids": 3,
+          "pss_covered": 3,
+          "io_covered": 3,
+          "churn": 0,
+          "read_bytes_per_second": 20451.676360949932,
+          "write_bytes_per_second": 0.0,
+          "partial": false
+        },
+        "worker_usage": {
+          "totals": null,
+          "partial": true
+        },
+        "validation_usage": {
+          "totals": null,
+          "invocations": 0,
+          "covered": 0,
+          "runs": 1,
+          "active_steps": 1,
+          "partial": true
+        },
+        "known_tokens": null,
+        "token_history": "partial",
+        "possible_usage_overlap": false,
+        "badge": "C15% P132M T?~",
+        "published": false
+      }
+    ]
+  },
+  "reviewer_after": {
+    "pid": 2329098,
+    "ppid": 2325262,
+    "start_ticks": 7108269,
+    "cwd": "/home/mantas/.treehouse/firstmate-7bab20/1/firstmate/.no-mistakes/r9/n/worktrees/c10a113eba52/01M1Y9SJC5EPMQMK25QJZTS88T",
+    "name": "pi"
+  },
+  "duplicate": {
+    "schema": 1,
+    "started_at": "2026-09-07T16:04:10.548302+00:00",
+    "finished_at": "2026-09-07T16:04:15.687529+00:00",
+    "interval_seconds": 5.014072414502152,
+    "scan_seconds": 0.02795095500187017,
+    "shared_pids_excluded": 3,
+    "scope": "Linux only; sampled CPU/I/O; PSS RAM; current Pi + known validation; partial history",
+    "rows": [
+      {
+        "task": "duplicate",
+        "metrics": {
+          "cpu_percent": null,
+          "rss_bytes": null,
+          "pss_bytes": null,
+          "pids": 0,
+          "stable_pids": 0,
+          "pss_covered": 0,
+          "io_covered": 0,
+          "churn": 0,
+          "read_bytes_per_second": null,
+          "write_bytes_per_second": null,
+          "partial": true
+        },
+        "worker_usage": {
+          "totals": null,
+          "partial": true
+        },
+        "validation_usage": {
+          "totals": null,
+          "invocations": 0,
+          "covered": 0,
+          "runs": 1,
+          "active_steps": 1,
+          "partial": true,
+          "shared_identity": true
+        },
+        "known_tokens": null,
+        "token_history": "partial",
+        "possible_usage_overlap": false,
+        "badge": "C?% P? T?~",
+        "published": false
+      },
+      {
+        "task": "fixture",
+        "metrics": {
+          "cpu_percent": null,
+          "rss_bytes": null,
+          "pss_bytes": null,
+          "pids": 0,
+          "stable_pids": 0,
+          "pss_covered": 0,
+          "io_covered": 0,
+          "churn": 0,
+          "read_bytes_per_second": null,
+          "write_bytes_per_second": null,
+          "partial": true
+        },
+        "worker_usage": {
+          "totals": null,
+          "partial": true
+        },
+        "validation_usage": {
+          "totals": null,
+          "invocations": 0,
+          "covered": 0,
+          "runs": 1,
+          "active_steps": 1,
+          "partial": true,
+          "shared_identity": true
+        },
+        "known_tokens": null,
+        "token_history": "partial",
+        "possible_usage_overlap": false,
+        "badge": "C?% P? T?~",
+        "published": false
+      }
+    ]
+  },
+  "native_invocations": [
+    {
+      "step_name": "review",
+      "purpose": "review",
+      "agent": "pi",
+      "model": "gpt-6-astra",
+      "delta_input_tokens": 6177,
+      "delta_output_tokens": 412,
+      "delta_cache_read_tokens": 20480,
+      "cache_creation_tokens": 0
+    }
+  ],
+  "after": {
+    "schema": 1,
+    "started_at": "2026-09-07T16:05:03.887669+00:00",
+    "finished_at": "2026-09-07T16:05:08.952542+00:00",
+    "interval_seconds": 5.003383891002159,
+    "scan_seconds": 0.006527915989863686,
+    "shared_pids_excluded": 0,
+    "scope": "Linux only; sampled CPU/I/O; PSS RAM; current Pi + known validation; partial history",
+    "rows": [
+      {
+        "task": "fixture",
+        "metrics": {
+          "cpu_percent": 0.0,
+          "rss_bytes": 123854848,
+          "pss_bytes": 64669696,
+          "pids": 2,
+          "stable_pids": 2,
+          "pss_covered": 2,
+          "io_covered": 2,
+          "churn": 0,
+          "read_bytes_per_second": 0.0,
+          "write_bytes_per_second": 0.0,
+          "partial": false
+        },
+        "worker_usage": {
+          "totals": null,
+          "partial": true
+        },
+        "validation_usage": {
+          "totals": {
+            "input": 6177,
+            "output": 412,
+            "cacheRead": 20480,
+            "cacheWrite": 0
+          },
+          "invocations": 1,
+          "covered": 1,
+          "runs": 1,
+          "active_steps": 0,
+          "partial": true
+        },
+        "known_tokens": 27069,
+        "token_history": "partial",
+        "possible_usage_overlap": false,
+        "badge": "C0% P61M T27K~",
+        "published": false
+      }
+    ]
+  },
+  "duplicate_usage": {
+    "schema": 1,
+    "started_at": "2026-09-07T16:05:09.022020+00:00",
+    "finished_at": "2026-09-07T16:05:14.157600+00:00",
+    "interval_seconds": 5.009506719012279,
+    "scan_seconds": 0.01876779600570444,
+    "shared_pids_excluded": 2,
+    "scope": "Linux only; sampled CPU/I/O; PSS RAM; current Pi + known validation; partial history",
+    "rows": [
+      {
+        "task": "duplicate",
+        "metrics": {
+          "cpu_percent": null,
+          "rss_bytes": null,
+          "pss_bytes": null,
+          "pids": 0,
+          "stable_pids": 0,
+          "pss_covered": 0,
+          "io_covered": 0,
+          "churn": 0,
+          "read_bytes_per_second": null,
+          "write_bytes_per_second": null,
+          "partial": true
+        },
+        "worker_usage": {
+          "totals": null,
+          "partial": true
+        },
+        "validation_usage": {
+          "totals": null,
+          "invocations": 1,
+          "covered": 1,
+          "runs": 1,
+          "active_steps": 0,
+          "partial": true,
+          "shared_identity": true
+        },
+        "known_tokens": null,
+        "token_history": "partial",
+        "possible_usage_overlap": false,
+        "badge": "C?% P? T?~",
+        "published": false
+      },
+      {
+        "task": "fixture",
+        "metrics": {
+          "cpu_percent": null,
+          "rss_bytes": null,
+          "pss_bytes": null,
+          "pids": 0,
+          "stable_pids": 0,
+          "pss_covered": 0,
+          "io_covered": 0,
+          "churn": 0,
+          "read_bytes_per_second": null,
+          "write_bytes_per_second": null,
+          "partial": true
+        },
+        "worker_usage": {
+          "totals": null,
+          "partial": true
+        },
+        "validation_usage": {
+          "totals": null,
+          "invocations": 1,
+          "covered": 1,
+          "runs": 1,
+          "active_steps": 0,
+          "partial": true,
+          "shared_identity": true
+        },
+        "known_tokens": null,
+        "token_history": "partial",
+        "possible_usage_overlap": false,
+        "badge": "C?% P? T?~",
+        "published": false
+      }
+    ]
+  },
+  "wrong_project": {
+    "schema": 1,
+    "started_at": "2026-09-07T16:05:14.271266+00:00",
+    "finished_at": "2026-09-07T16:05:19.352012+00:00",
+    "interval_seconds": 5.003800049496931,
+    "scan_seconds": 0.0073821989935822785,
+    "shared_pids_excluded": 0,
+    "scope": "Linux only; sampled CPU/I/O; PSS RAM; current Pi + known validation; partial history",
+    "rows": [
+      {
+        "task": "fixture",
+        "metrics": {
+          "cpu_percent": 0.0,
+          "rss_bytes": 123854848,
+          "pss_bytes": 64665600,
+          "pids": 2,
+          "stable_pids": 2,
+          "pss_covered": 2,
+          "io_covered": 2,
+          "churn": 0,
+          "read_bytes_per_second": 0.0,
+          "write_bytes_per_second": 0.0,
+          "partial": false
+        },
+        "worker_usage": {
+          "totals": null,
+          "partial": true
+        },
+        "validation_usage": {
+          "totals": null,
+          "invocations": 0,
+          "covered": 0,
+          "runs": 0,
+          "active_steps": 0,
+          "partial": true
+        },
+        "known_tokens": null,
+        "token_history": "partial",
+        "possible_usage_overlap": false,
+        "badge": "C0% P61M T?~",
+        "published": false
+      }
+    ]
+  },
+  "fixture_runs": [
+    {
+      "id": "01M1Y9SJC5EPMQMK25QJZTS88T",
+      "status": "completed",
+      "branch": "fixture-review",
+      "worktree_dir": "/home/mantas/.treehouse/firstmate-7bab20/1/firstmate/.no-mistakes/r9/n/worktrees/c10a113eba52/01M1Y9SJC5EPMQMK25QJZTS88T"
+    }
+  ],
+  "passed": true,
+  "fixture_daemon_exited": true,
+  "lab_cleanup_tripwire": true,
+  "socket_removed": true
+}

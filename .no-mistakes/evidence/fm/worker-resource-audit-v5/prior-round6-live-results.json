@@ -1,0 +1,445 @@
+{
+  "telemetry": "Synthetic usage; native offline Pi, Herdr metadata and Linux processes",
+  "baseline": {
+    "schema": 1,
+    "started_at": "2026-09-07T14:22:14.825193+00:00",
+    "finished_at": "2026-09-07T14:22:19.937087+00:00",
+    "interval_seconds": 5.008606690000306,
+    "scan_seconds": 0.01699567800096702,
+    "shared_pids_excluded": 0,
+    "scope": "Linux only; sampled CPU/I/O; PSS RAM; current Pi + known validation; partial history",
+    "rows": [
+      {
+        "task": "busy",
+        "metrics": {
+          "cpu_percent": 101.62506890713131,
+          "rss_bytes": 182816768,
+          "pss_bytes": 117786624,
+          "pids": 3,
+          "stable_pids": 3,
+          "pss_covered": 3,
+          "io_covered": 3,
+          "churn": 0,
+          "read_bytes_per_second": 0.0,
+          "write_bytes_per_second": 0.0,
+          "partial": false
+        },
+        "worker_usage": {
+          "totals": {
+            "input": 9000,
+            "output": 10,
+            "cacheRead": 20,
+            "cacheWrite": 0
+          },
+          "records": 1,
+          "missing": 0,
+          "nested_usage": false,
+          "partial": true
+        },
+        "validation_usage": {
+          "totals": null,
+          "invocations": 0,
+          "covered": 0,
+          "runs": 0,
+          "active_steps": 0,
+          "partial": true
+        },
+        "known_tokens": 9030,
+        "token_history": "partial",
+        "possible_usage_overlap": false,
+        "badge": "C102% P112M T9.0K~",
+        "published": false
+      },
+      {
+        "task": "idle",
+        "metrics": {
+          "cpu_percent": 1.7969069158431863,
+          "rss_bytes": 183365632,
+          "pss_bytes": 118158336,
+          "pids": 3,
+          "stable_pids": 3,
+          "pss_covered": 3,
+          "io_covered": 3,
+          "churn": 0,
+          "read_bytes_per_second": 0.0,
+          "write_bytes_per_second": 0.0,
+          "partial": false
+        },
+        "worker_usage": {
+          "totals": {
+            "input": 100,
+            "output": 10,
+            "cacheRead": 20,
+            "cacheWrite": 0
+          },
+          "records": 1,
+          "missing": 0,
+          "nested_usage": false,
+          "partial": true
+        },
+        "validation_usage": {
+          "totals": null,
+          "invocations": 0,
+          "covered": 0,
+          "runs": 0,
+          "active_steps": 0,
+          "partial": true
+        },
+        "known_tokens": 130,
+        "token_history": "partial",
+        "possible_usage_overlap": false,
+        "badge": "C2% P112M T130~",
+        "published": false
+      }
+    ]
+  },
+  "before_publish": {
+    "busy": {
+      "agent": {
+        "agent": "pi",
+        "agent_session": {
+          "agent": "pi",
+          "kind": "path",
+          "source": "herdr:pi",
+          "value": "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-round4/.pi/agent/sessions/busy.jsonl"
+        },
+        "agent_status": "idle",
+        "cwd": "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-round4/busy",
+        "focused": true,
+        "foreground_cwd": "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-round4/busy",
+        "pane_id": "w1:p1",
+        "revision": 2,
+        "state_change_seq": 1,
+        "tab_id": "w1:t1",
+        "terminal_id": "term_65ae557e1e0151",
+        "terminal_title": "\u03c0 - busy",
+        "terminal_title_stripped": "\u03c0 - busy",
+        "workspace_id": "w1"
+      },
+      "type": "agent_info"
+    },
+    "idle": {
+      "agent": {
+        "agent": "pi",
+        "agent_session": {
+          "agent": "pi",
+          "kind": "path",
+          "source": "herdr:pi",
+          "value": "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-round4/.pi/agent/sessions/idle.jsonl"
+        },
+        "agent_status": "idle",
+        "cwd": "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-round4/idle",
+        "focused": false,
+        "foreground_cwd": "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-round4/idle",
+        "pane_id": "w2:p1",
+        "revision": 2,
+        "state_change_seq": 2,
+        "tab_id": "w2:t1",
+        "terminal_id": "term_65ae557e23f852",
+        "terminal_title": "\u03c0 - idle",
+        "terminal_title_stripped": "\u03c0 - idle",
+        "workspace_id": "w2"
+      },
+      "type": "agent_info"
+    }
+  },
+  "publication": {
+    "schema": 1,
+    "started_at": "2026-09-07T14:22:20.022262+00:00",
+    "finished_at": "2026-09-07T14:22:25.249152+00:00",
+    "interval_seconds": 5.008776783997746,
+    "scan_seconds": 0.01730831400345778,
+    "shared_pids_excluded": 0,
+    "scope": "Linux only; sampled CPU/I/O; PSS RAM; current Pi + known validation; partial history",
+    "rows": [
+      {
+        "task": "busy",
+        "metrics": {
+          "cpu_percent": 99.82477190786808,
+          "rss_bytes": 182816768,
+          "pss_bytes": 117893120,
+          "pids": 3,
+          "stable_pids": 3,
+          "pss_covered": 3,
+          "io_covered": 3,
+          "churn": 0,
+          "read_bytes_per_second": 0.0,
+          "write_bytes_per_second": 0.0,
+          "partial": false
+        },
+        "worker_usage": {
+          "totals": {
+            "input": 9000,
+            "output": 10,
+            "cacheRead": 20,
+            "cacheWrite": 0
+          },
+          "records": 1,
+          "missing": 0,
+          "nested_usage": false,
+          "partial": true
+        },
+        "validation_usage": {
+          "totals": null,
+          "invocations": 0,
+          "covered": 0,
+          "runs": 0,
+          "active_steps": 0,
+          "partial": true
+        },
+        "known_tokens": 9030,
+        "token_history": "partial",
+        "possible_usage_overlap": false,
+        "badge": "C100% P112M T9.0K~",
+        "published": true
+      },
+      {
+        "task": "idle",
+        "metrics": {
+          "cpu_percent": 0.0,
+          "rss_bytes": 183365632,
+          "pss_bytes": 118266880,
+          "pids": 3,
+          "stable_pids": 3,
+          "pss_covered": 3,
+          "io_covered": 3,
+          "churn": 0,
+          "read_bytes_per_second": 0.0,
+          "write_bytes_per_second": 0.0,
+          "partial": false
+        },
+        "worker_usage": {
+          "totals": {
+            "input": 100,
+            "output": 10,
+            "cacheRead": 20,
+            "cacheWrite": 0
+          },
+          "records": 1,
+          "missing": 0,
+          "nested_usage": false,
+          "partial": true
+        },
+        "validation_usage": {
+          "totals": null,
+          "invocations": 0,
+          "covered": 0,
+          "runs": 0,
+          "active_steps": 0,
+          "partial": true
+        },
+        "known_tokens": 130,
+        "token_history": "partial",
+        "possible_usage_overlap": false,
+        "badge": "C0% P112M T130~",
+        "published": true
+      }
+    ]
+  },
+  "after_publish": {
+    "busy": {
+      "agent": {
+        "agent": "pi",
+        "agent_session": {
+          "agent": "pi",
+          "kind": "path",
+          "source": "herdr:pi",
+          "value": "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-round4/.pi/agent/sessions/busy.jsonl"
+        },
+        "agent_status": "idle",
+        "cwd": "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-round4/busy",
+        "focused": true,
+        "foreground_cwd": "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-round4/busy",
+        "pane_id": "w1:p1",
+        "revision": 3,
+        "state_change_seq": 1,
+        "tab_id": "w1:t1",
+        "terminal_id": "term_65ae557e1e0151",
+        "terminal_title": "\u03c0 - busy",
+        "terminal_title_stripped": "\u03c0 - busy",
+        "tokens": {
+          "fm_resources": "C100% P112M T9.0K~"
+        },
+        "workspace_id": "w1"
+      },
+      "type": "agent_info"
+    },
+    "idle": {
+      "agent": {
+        "agent": "pi",
+        "agent_session": {
+          "agent": "pi",
+          "kind": "path",
+          "source": "herdr:pi",
+          "value": "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-round4/.pi/agent/sessions/idle.jsonl"
+        },
+        "agent_status": "idle",
+        "cwd": "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-round4/idle",
+        "focused": false,
+        "foreground_cwd": "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-round4/idle",
+        "pane_id": "w2:p1",
+        "revision": 3,
+        "state_change_seq": 2,
+        "tab_id": "w2:t1",
+        "terminal_id": "term_65ae557e23f852",
+        "terminal_title": "\u03c0 - idle",
+        "terminal_title_stripped": "\u03c0 - idle",
+        "tokens": {
+          "fm_resources": "C0% P112M T130~"
+        },
+        "workspace_id": "w2"
+      },
+      "type": "agent_info"
+    }
+  },
+  "stale_identity": {
+    "schema": 1,
+    "started_at": "2026-09-07T14:22:45.984686+00:00",
+    "finished_at": "2026-09-07T14:22:51.158516+00:00",
+    "interval_seconds": 5.008751683999435,
+    "scan_seconds": 0.017311925999820232,
+    "shared_pids_excluded": 0,
+    "scope": "Linux only; sampled CPU/I/O; PSS RAM; current Pi + known validation; partial history",
+    "rows": [
+      {
+        "task": "busy",
+        "metrics": {
+          "cpu_percent": 100.02492269689776,
+          "rss_bytes": 182816768,
+          "pss_bytes": 117971968,
+          "pids": 3,
+          "stable_pids": 3,
+          "pss_covered": 3,
+          "io_covered": 3,
+          "churn": 0,
+          "read_bytes_per_second": 0.0,
+          "write_bytes_per_second": 0.0,
+          "partial": false
+        },
+        "worker_usage": {
+          "totals": {
+            "input": 9000,
+            "output": 10,
+            "cacheRead": 20,
+            "cacheWrite": 0
+          },
+          "records": 1,
+          "missing": 0,
+          "nested_usage": false,
+          "partial": true
+        },
+        "validation_usage": {
+          "totals": null,
+          "invocations": 0,
+          "covered": 0,
+          "runs": 0,
+          "active_steps": 0,
+          "partial": true
+        },
+        "known_tokens": 9030,
+        "token_history": "partial",
+        "possible_usage_overlap": false,
+        "badge": "C100% P112M T9.0K~",
+        "published": false
+      },
+      {
+        "task": "idle",
+        "metrics": {
+          "cpu_percent": 0.0,
+          "rss_bytes": 183365632,
+          "pss_bytes": 118345728,
+          "pids": 3,
+          "stable_pids": 3,
+          "pss_covered": 3,
+          "io_covered": 3,
+          "churn": 0,
+          "read_bytes_per_second": 0.0,
+          "write_bytes_per_second": 0.0,
+          "partial": false
+        },
+        "worker_usage": {
+          "totals": {
+            "input": 100,
+            "output": 10,
+            "cacheRead": 20,
+            "cacheWrite": 0
+          },
+          "records": 1,
+          "missing": 0,
+          "nested_usage": false,
+          "partial": true
+        },
+        "validation_usage": {
+          "totals": null,
+          "invocations": 0,
+          "covered": 0,
+          "runs": 0,
+          "active_steps": 0,
+          "partial": true
+        },
+        "known_tokens": 130,
+        "token_history": "partial",
+        "possible_usage_overlap": false,
+        "badge": "C0% P112M T130~",
+        "published": true
+      }
+    ]
+  },
+  "after_expiry": {
+    "busy": {
+      "agent": {
+        "agent": "pi",
+        "agent_session": {
+          "agent": "pi",
+          "kind": "path",
+          "source": "herdr:pi",
+          "value": "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-round4/.pi/agent/sessions/busy.jsonl"
+        },
+        "agent_status": "idle",
+        "cwd": "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-round4/busy",
+        "focused": true,
+        "foreground_cwd": "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-round4/busy",
+        "pane_id": "w1:p1",
+        "revision": 4,
+        "state_change_seq": 1,
+        "tab_id": "w1:t1",
+        "terminal_id": "term_65ae557e1e0151",
+        "terminal_title": "\u03c0 - busy",
+        "terminal_title_stripped": "\u03c0 - busy",
+        "workspace_id": "w1"
+      },
+      "type": "agent_info"
+    },
+    "idle": {
+      "agent": {
+        "agent": "pi",
+        "agent_session": {
+          "agent": "pi",
+          "kind": "path",
+          "source": "herdr:pi",
+          "value": "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-round4/.pi/agent/sessions/idle.jsonl"
+        },
+        "agent_status": "idle",
+        "cwd": "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-round4/idle",
+        "focused": false,
+        "foreground_cwd": "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-round4/idle",
+        "pane_id": "w2:p1",
+        "revision": 5,
+        "state_change_seq": 2,
+        "tab_id": "w2:t1",
+        "terminal_id": "term_65ae557e23f852",
+        "terminal_title": "\u03c0 - idle",
+        "terminal_title_stripped": "\u03c0 - idle",
+        "workspace_id": "w2"
+      },
+      "type": "agent_info"
+    }
+  },
+  "visual_attach": {
+    "code": 1,
+    "stdout": "",
+    "stderr": "fm-herdr-lab: run forbids session lifecycle operations; use guarded teardown\n"
+  },
+  "checks": "publication, ranking, details, metadata identity guard and TTL passed",
+  "teardown_default_tripwire": "passed"
+}

@@ -1,0 +1,25 @@
+{
+  "verdict": "inconclusive",
+  "fix": "Added exact-session guarded full-client attachment for fm-lab-resource-v5",
+  "focused_test": {
+    "command": "bash tests/fm-herdr-lab.test.sh attachment",
+    "result": "pass",
+    "output": "ok - fm-herdr-lab: resource client attachment is scoped, owned, and tripwire guarded"
+  },
+  "live_checks": [
+    {"name": "Attach real Herdr client through pipeline helper", "result": "pass"},
+    {"name": "Display resource badges on secondary pi row without wrapping", "result": "pass", "evidence": "round5-badges.txt"},
+    {"name": "Open configured detail popup with Ctrl-b Alt-r", "result": "pass", "evidence": "round5-popup.txt"},
+    {"name": "Observe resource badges disappear after expiry", "result": "pass", "evidence": "round5-expiry.txt"},
+    {"name": "Preserve default-session tripwire through teardown", "result": "pass", "evidence": "round5-helper.json"},
+    {"name": "Attribute native Linux browser work", "result": "blocked", "reason": "Cached Chromium exits 127 because libnspr4.so is unavailable; system package installation forbidden"},
+    {"name": "Attribute active validation reviewer", "result": "untested", "reason": "No genuine lab-owned active reviewer; this test phase cannot initiate another validation pipeline"}
+  ],
+  "limitations": [
+    "Terminal cell-grid captures, not graphical screenshots",
+    "Real offline Pi with seeded session-path identity; no synthetic token totals",
+    "Native browser and active-reviewer proof requires the worker-owned handoff in round5-handoff.txt",
+    "No broad suite, linters, static analysis or other pipeline phases executed"
+  ],
+  "cleanup": "Removed transient fixture, isolated tmux server and lab session; evidence script retained outside worktree; only helper and behavioral test source changes remain"
+}

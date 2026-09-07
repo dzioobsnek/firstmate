@@ -1,0 +1,511 @@
+{
+  "head": "a46f9ff3df8124515a669968c45c22bbd3ec81e3",
+  "usage": "No seeded tokens or validation records",
+  "dependency_sha256": {
+    "libnss3_2%3a3.120-1ubuntu2.1_amd64.deb": "27ae6a8dbc2b8b750731c9098abb8750c5d584c79c5a024316d0b3c9bb50971c",
+    "libnspr4_2%3a4.38.2-1ubuntu1_amd64.deb": "2f28284b35765aaccad1785ab017425e1ca378c395256331f9c662d04335d43f",
+    "libasound2t64_1.2.15.3-1ubuntu1.1_amd64.deb": "96e20cf5c9095ef54ba46fccffea5c01cf2de17a1012c5683a67e43504a6d726"
+  },
+  "process_before": {
+    "process_info": {
+      "foreground_process_group_id": 2099969,
+      "foreground_processes": [
+        {
+          "argv": [
+            "/bin/bash"
+          ],
+          "cmdline": "/bin/bash",
+          "cwd": "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-native-fixture/browser",
+          "name": "bash",
+          "pid": 2099969
+        }
+      ],
+      "pane_id": "w1:p1",
+      "shell_pid": 2099969
+    },
+    "type": "pane_process_info"
+  },
+  "baseline": {
+    "schema": 1,
+    "started_at": "2026-09-07T15:32:52.278283+00:00",
+    "finished_at": "2026-09-07T15:32:57.341028+00:00",
+    "interval_seconds": 5.0039458150058636,
+    "scan_seconds": 0.0076830079924548045,
+    "shared_pids_excluded": 0,
+    "scope": "Linux only; sampled CPU/I/O; PSS RAM; current Pi + known validation; partial history",
+    "rows": [
+      {
+        "task": "browser",
+        "metrics": {
+          "cpu_percent": 0.0,
+          "rss_bytes": 149479424,
+          "pss_bytes": 85028864,
+          "pids": 4,
+          "stable_pids": 4,
+          "pss_covered": 4,
+          "io_covered": 4,
+          "churn": 0,
+          "read_bytes_per_second": 0.0,
+          "write_bytes_per_second": 0.0,
+          "partial": false
+        },
+        "worker_usage": {
+          "totals": null,
+          "partial": true
+        },
+        "validation_usage": {
+          "totals": null,
+          "invocations": 0,
+          "covered": 0,
+          "runs": 0,
+          "active_steps": 0,
+          "partial": true
+        },
+        "known_tokens": null,
+        "token_history": "partial",
+        "possible_usage_overlap": false,
+        "badge": "C0% P81M T?~",
+        "published": false
+      }
+    ]
+  },
+  "chrome_log": "\nDevTools listening on ws://127.0.0.1:19385/devtools/browser/1c1e9a89-6a40-4e34-8627-6d3447d24c40\n[2099993:2099993:0907/183301.668725:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.Properties.GetAll: object_path= /org/freedesktop/UPower/devices/DisplayDevice: org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.UPower was not provided by any .service files\n",
+  "browser_commands": [
+    {
+      "args": [
+        "open",
+        "data:text/html,<title>Resource fixture</title><h1>Native Linux browser fixture</h1>"
+      ],
+      "code": 0,
+      "stdout": "page:\n  title: Resource fixture\n  url: \"data:text/html,<title>Resource fixture</title><h1>Native Linux browser fixture</h1>\"\n  refs: 2\nsnapshot:\nuid=g1:1_0 RootWebArea \"Resource fixture\" url=\"data:text/html,<title>Resource fixture</title><h1>Native Linux browser fixture</h1>\"\n  uid=g1:1_1 heading \"Native Linux browser fixture\" level=\"1\"\nhelp[1]:\n  Use `chrome-devtools-axi eval <expr>` for JS expressions. For multi-statement code, pass a function: `eval \"() => { ...; return result }\"`\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "eval",
+        "() => { window.load = setInterval(() => { const end = performance.now()+80; while(performance.now()<end) Math.sqrt(Math.random()); },100); return document.title; }"
+      ],
+      "code": 0,
+      "stdout": "result: \"\\\"Resource fixture\\\"\"\nhelp[1]:\n  Run `chrome-devtools-axi snapshot` to see current page state\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "screenshot",
+        "/home/mantas/.no-mistakes/evidence/01M1XXDCFPT5D3QR4TYSHQ4B70/round8-browser.png"
+      ],
+      "code": 0,
+      "stdout": "screenshot: /home/mantas/.no-mistakes/evidence/01M1XXDCFPT5D3QR4TYSHQ4B70/round8-browser.png\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "stop"
+      ],
+      "code": 0,
+      "stdout": "status: stopped\n",
+      "stderr": ""
+    }
+  ],
+  "identities_before_sample": [
+    {
+      "pid": 2099969,
+      "ppid": 2099916,
+      "start_ticks": 6920666,
+      "name": "bash"
+    },
+    {
+      "pid": 2099994,
+      "ppid": 2099969,
+      "start_ticks": 6920670,
+      "name": "pi"
+    },
+    {
+      "pid": 2099993,
+      "ppid": 2099969,
+      "start_ticks": 6920670,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100228,
+      "ppid": 2099993,
+      "start_ticks": 6921895,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100273,
+      "ppid": 2100228,
+      "start_ticks": 6921900,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100164,
+      "ppid": 2099993,
+      "start_ticks": 6921884,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100166,
+      "ppid": 2100164,
+      "start_ticks": 6921887,
+      "name": "chrome"
+    },
+    {
+      "pid": 2101042,
+      "ppid": 2100166,
+      "start_ticks": 6922329,
+      "name": "chrome"
+    },
+    {
+      "pid": 2101023,
+      "ppid": 2100166,
+      "start_ticks": 6922325,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100895,
+      "ppid": 2100166,
+      "start_ticks": 6922127,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100417,
+      "ppid": 2100166,
+      "start_ticks": 6921926,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100391,
+      "ppid": 2100166,
+      "start_ticks": 6921922,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100373,
+      "ppid": 2100166,
+      "start_ticks": 6921919,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100362,
+      "ppid": 2100166,
+      "start_ticks": 6921917,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100338,
+      "ppid": 2100166,
+      "start_ticks": 6921912,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100327,
+      "ppid": 2100166,
+      "start_ticks": 6921907,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100263,
+      "ppid": 2100166,
+      "start_ticks": 6921899,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100163,
+      "ppid": 2099993,
+      "start_ticks": 6921884,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100194,
+      "ppid": 2100163,
+      "start_ticks": 6921890,
+      "name": "chrome"
+    }
+  ],
+  "during": {
+    "schema": 1,
+    "started_at": "2026-09-07T15:33:11.844900+00:00",
+    "finished_at": "2026-09-07T15:33:17.030525+00:00",
+    "interval_seconds": 5.0613865984923905,
+    "scan_seconds": 0.1225317110074684,
+    "shared_pids_excluded": 0,
+    "scope": "Linux only; sampled CPU/I/O; PSS RAM; current Pi + known validation; partial history",
+    "rows": [
+      {
+        "task": "browser",
+        "metrics": {
+          "cpu_percent": 81.40061858201473,
+          "rss_bytes": 1798520832,
+          "pss_bytes": 535280640,
+          "pids": 19,
+          "stable_pids": 19,
+          "pss_covered": 19,
+          "io_covered": 19,
+          "churn": 0,
+          "read_bytes_per_second": 0.0,
+          "write_bytes_per_second": 5664.8508154939955,
+          "partial": false
+        },
+        "worker_usage": {
+          "totals": null,
+          "partial": true
+        },
+        "validation_usage": {
+          "totals": null,
+          "invocations": 0,
+          "covered": 0,
+          "runs": 0,
+          "active_steps": 0,
+          "partial": true
+        },
+        "known_tokens": null,
+        "token_history": "partial",
+        "possible_usage_overlap": false,
+        "badge": "C81% P510M T?~",
+        "published": false
+      }
+    ]
+  },
+  "identities_after_sample": [
+    {
+      "pid": 2099969,
+      "ppid": 2099916,
+      "start_ticks": 6920666,
+      "name": "bash"
+    },
+    {
+      "pid": 2099994,
+      "ppid": 2099969,
+      "start_ticks": 6920670,
+      "name": "pi"
+    },
+    {
+      "pid": 2099993,
+      "ppid": 2099969,
+      "start_ticks": 6920670,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100228,
+      "ppid": 2099993,
+      "start_ticks": 6921895,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100273,
+      "ppid": 2100228,
+      "start_ticks": 6921900,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100164,
+      "ppid": 2099993,
+      "start_ticks": 6921884,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100166,
+      "ppid": 2100164,
+      "start_ticks": 6921887,
+      "name": "chrome"
+    },
+    {
+      "pid": 2101042,
+      "ppid": 2100166,
+      "start_ticks": 6922329,
+      "name": "chrome"
+    },
+    {
+      "pid": 2101023,
+      "ppid": 2100166,
+      "start_ticks": 6922325,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100895,
+      "ppid": 2100166,
+      "start_ticks": 6922127,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100417,
+      "ppid": 2100166,
+      "start_ticks": 6921926,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100391,
+      "ppid": 2100166,
+      "start_ticks": 6921922,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100373,
+      "ppid": 2100166,
+      "start_ticks": 6921919,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100362,
+      "ppid": 2100166,
+      "start_ticks": 6921917,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100338,
+      "ppid": 2100166,
+      "start_ticks": 6921912,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100327,
+      "ppid": 2100166,
+      "start_ticks": 6921907,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100263,
+      "ppid": 2100166,
+      "start_ticks": 6921899,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100163,
+      "ppid": 2099993,
+      "start_ticks": 6921884,
+      "name": "chrome"
+    },
+    {
+      "pid": 2100194,
+      "ppid": 2100163,
+      "start_ticks": 6921890,
+      "name": "chrome"
+    }
+  ],
+  "native_browser_started": true,
+  "shared_exclusion": {
+    "schema": 1,
+    "started_at": "2026-09-07T15:33:17.098186+00:00",
+    "finished_at": "2026-09-07T15:33:22.422070+00:00",
+    "interval_seconds": 5.094511533498007,
+    "scan_seconds": 0.1888081549986964,
+    "shared_pids_excluded": 19,
+    "scope": "Linux only; sampled CPU/I/O; PSS RAM; current Pi + known validation; partial history",
+    "rows": [
+      {
+        "task": "browser",
+        "metrics": {
+          "cpu_percent": null,
+          "rss_bytes": null,
+          "pss_bytes": null,
+          "pids": 0,
+          "stable_pids": 0,
+          "pss_covered": 0,
+          "io_covered": 0,
+          "churn": 0,
+          "read_bytes_per_second": null,
+          "write_bytes_per_second": null,
+          "partial": true
+        },
+        "worker_usage": {
+          "totals": null,
+          "partial": true
+        },
+        "validation_usage": {
+          "totals": null,
+          "invocations": 0,
+          "covered": 0,
+          "runs": 0,
+          "active_steps": 0,
+          "partial": true
+        },
+        "known_tokens": null,
+        "token_history": "partial",
+        "possible_usage_overlap": false,
+        "badge": "C?% P? T?~",
+        "published": false
+      },
+      {
+        "task": "shared",
+        "metrics": {
+          "cpu_percent": null,
+          "rss_bytes": null,
+          "pss_bytes": null,
+          "pids": 0,
+          "stable_pids": 0,
+          "pss_covered": 0,
+          "io_covered": 0,
+          "churn": 0,
+          "read_bytes_per_second": null,
+          "write_bytes_per_second": null,
+          "partial": true
+        },
+        "worker_usage": {
+          "totals": null,
+          "partial": true
+        },
+        "validation_usage": {
+          "totals": null,
+          "invocations": 0,
+          "covered": 0,
+          "runs": 0,
+          "active_steps": 0,
+          "partial": true
+        },
+        "known_tokens": null,
+        "token_history": "partial",
+        "possible_usage_overlap": false,
+        "badge": "C?% P? T?~",
+        "published": false
+      }
+    ]
+  },
+  "after_browser_exit": {
+    "schema": 1,
+    "started_at": "2026-09-07T15:33:25.773058+00:00",
+    "finished_at": "2026-09-07T15:33:30.837300+00:00",
+    "interval_seconds": 5.003159271494951,
+    "scan_seconds": 0.006117435012129135,
+    "shared_pids_excluded": 0,
+    "scope": "Linux only; sampled CPU/I/O; PSS RAM; current Pi + known validation; partial history",
+    "rows": [
+      {
+        "task": "browser",
+        "metrics": {
+          "cpu_percent": 0.0,
+          "rss_bytes": 123019264,
+          "pss_bytes": 64045056,
+          "pids": 2,
+          "stable_pids": 2,
+          "pss_covered": 2,
+          "io_covered": 2,
+          "churn": 0,
+          "read_bytes_per_second": 0.0,
+          "write_bytes_per_second": 0.0,
+          "partial": false
+        },
+        "worker_usage": {
+          "totals": null,
+          "partial": true
+        },
+        "validation_usage": {
+          "totals": null,
+          "invocations": 0,
+          "covered": 0,
+          "runs": 0,
+          "active_steps": 0,
+          "partial": true
+        },
+        "known_tokens": null,
+        "token_history": "partial",
+        "possible_usage_overlap": false,
+        "badge": "C0% P61M T?~",
+        "published": false
+      }
+    ]
+  },
+  "checks": "Native browser CPU/PSS attribution, shared exclusion and post-exit reduction passed",
+  "reviewer_blocker": "Installed no-mistakes eval run only replays captured case sets; no supported isolated synthetic-fixture native runs/step_results/agent_invocations producer supplied. No nested pipeline or fabricated active identity launched.",
+  "teardown_default_tripwire": "passed"
+}

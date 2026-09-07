@@ -1,0 +1,40 @@
+ spaces                                    │   1     +
+                                           │
+ ○ resource-visual                         │ pi v0.85.1
+                                           │ escape interrupt · ctrl+c/ctrl+d clear/exit · / commands · ! bash · ctrl+o more
+                                           │ Press ctrl+o to show full startup help and loaded resources.
+                                           │     ┌ popup ─────────────────────────────────────────────────────────────────────────────┐
+                                           │ Pi c│Worker resources - 2026-09-07T14:20:23.471391+00:00                                 │
+                                           │     │Sample 5.00s; CPU: % of one core; RAM: PSS (RSS in details).                        │
+                                           │ This│T~: incomplete token history; C~: partial CPU sample; ?: unknown; not a subscriptio │
+                                           │ save│n bill.                                                                             │
+                                           │     │Disk order uses write bytes/s; shared services and remote/host/GPU work are exclude │
+                                           │ Warn│d.                                                                                  │
+                                           │   /h│                                                                                    │
+                                           │   /h│visual  C0% P61M T?~                                                                │
+                                           │     │  RSS 118M; disk R/W 0/0 B/s; PIDs 2; PSS 2/2; churn 0; sample observed trees       │
+                                           │─────│  Pi: unknown                                                                       │────
+                                           │     │  validation: unknown                                                               │
+                                           │─────│  Pi recorded usage entries 0; missing/unreadable entries 0.                        │────
+                                           │~/.no│  Validation coverage 0/0 returned calls; 0 active steps; totals can lag.           │a...
+ new                                   menu│0.0%/│                                                                                    │nown
+───────────────────────────────────────────│     │Press Enter to close.                                                               │
+ agents                             grouped│     │                                                                                    │
+                                           │     │                                                                                    │
+ ○ resource-visual                         │     │                                                                                    │
+   pi · C0% P61M T?~                       │     │                                                                                    │
+                                           │     │                                                                                    │
+                                           │     │                                                                                    │
+                                           │     │                                                                                    │
+                                           │     │                                                                                    │
+                                           │     │                                                                                    │
+                                           │     │                                                                                    │
+                                           │     │                                                                                    │
+                                           │     │                                                                                    │
+                                           │     │                                                                                    │
+                                           │     │                                                                                    │
+                                           │     └────────────────────────────────────────────────────────────────────────────────────┘
+                                           │
+                                           │
+                                           │
+                                          «│

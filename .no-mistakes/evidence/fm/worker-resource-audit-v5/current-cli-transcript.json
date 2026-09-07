@@ -1,0 +1,188 @@
+[
+  {
+    "command": [
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/bin/fm-worker-resources.sh",
+      "--home",
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/.resource-cli-ktexfm6o",
+      "--json"
+    ],
+    "code": 0,
+    "stdout": "{\n  \"schema\": 1,\n  \"started_at\": \"2026-09-07T16:35:43.578485+00:00\",\n  \"finished_at\": \"2026-09-07T16:35:48.578902+00:00\",\n  \"interval_seconds\": 5.000103736987512,\n  \"scan_seconds\": 3.749999450519681e-06,\n  \"shared_pids_excluded\": 0,\n  \"scope\": \"Linux only; sampled CPU/I/O; PSS RAM; current Pi + known validation; partial history\",\n  \"rows\": []\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/bin/fm-worker-resources.sh",
+      "--home",
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/.resource-cli-ktexfm6o",
+      "--herdr-config"
+    ],
+    "code": 0,
+    "stdout": "# Suggested fragment only: merge manually; preserve existing custom identity rows.\n[ui]\nsidebar_width = 44\nsidebar_max_width = 52\n\n[ui.sidebar.agents]\nrows = [[\"state_icon\", \"workspace\", \"tab\"], [\"agent\", \"$fm_resources\"]]\n\n[[keys.command]]\nkey = \"prefix+alt+r\"\ntype = \"popup\"\ncommand = \"/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/bin/fm-worker-resources.sh --home /home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/.resource-cli-ktexfm6o --wait\"\nwidth = \"90%\"\nheight = \"80%\"\n# The popup is read-only. Refresh badges separately with --publish.\n# Badges expire after 60 seconds; blank means not sampled or stale.\n\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/bin/fm-worker-resources.sh",
+      "--home",
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/.resource-cli-ktexfm6o",
+      "--interval",
+      "2"
+    ],
+    "code": 2,
+    "stdout": "",
+    "stderr": "usage: fm-worker-resources.py [-h] [--home HOME] [--json]\n                              [--sort {cpu,ram,tokens,disk}] [--publish]\n                              [--herdr-config] [--wait]\nfm-worker-resources.py: error: unrecognized arguments: --interval 2\n"
+  },
+  {
+    "command": [
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/bin/fm-worker-resources.sh",
+      "--home",
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/.resource-cli-ktexfm6o",
+      "--ttl",
+      "30"
+    ],
+    "code": 2,
+    "stdout": "",
+    "stderr": "usage: fm-worker-resources.py [-h] [--home HOME] [--json]\n                              [--sort {cpu,ram,tokens,disk}] [--publish]\n                              [--herdr-config] [--wait]\nfm-worker-resources.py: error: unrecognized arguments: --ttl 30\n"
+  },
+  {
+    "command": [
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/bin/fm-worker-resources.sh",
+      "--home",
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/.resource-cli-ktexfm6o",
+      "--sidebar-width",
+      "48"
+    ],
+    "code": 2,
+    "stdout": "",
+    "stderr": "usage: fm-worker-resources.py [-h] [--home HOME] [--json]\n                              [--sort {cpu,ram,tokens,disk}] [--publish]\n                              [--herdr-config] [--wait]\nfm-worker-resources.py: error: unrecognized arguments: --sidebar-width 48\n"
+  },
+  {
+    "command": [
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/bin/fm-worker-resources.sh",
+      "--home",
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/.resource-cli-ktexfm6o",
+      "--herdr-config",
+      "--publish"
+    ],
+    "code": 2,
+    "stdout": "",
+    "stderr": "usage: fm-worker-resources.py [-h] [--home HOME] [--json]\n                              [--sort {cpu,ram,tokens,disk}] [--publish]\n                              [--herdr-config] [--wait]\nfm-worker-resources.py: error: --herdr-config cannot publish\n"
+  },
+  {
+    "command": [
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/bin/fm-worker-resources.sh",
+      "--home",
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/.resource-cli-ktexfm6o",
+      "--json"
+    ],
+    "code": 0,
+    "stdout": "{\n  \"schema\": 1,\n  \"started_at\": \"2026-09-07T16:35:48.949182+00:00\",\n  \"finished_at\": \"2026-09-07T16:35:53.949616+00:00\",\n  \"interval_seconds\": 5.000114248992759,\n  \"scan_seconds\": 2.379000943619758e-05,\n  \"shared_pids_excluded\": 0,\n  \"scope\": \"Linux only; sampled CPU/I/O; PSS RAM; current Pi + known validation; partial history\",\n  \"rows\": [\n    {\n      \"task\": \"unsupported\",\n      \"metrics\": {\n        \"cpu_percent\": null,\n        \"rss_bytes\": null,\n        \"pss_bytes\": null,\n        \"pids\": 0,\n        \"stable_pids\": 0,\n        \"pss_covered\": 0,\n        \"io_covered\": 0,\n        \"churn\": 0,\n        \"read_bytes_per_second\": null,\n        \"write_bytes_per_second\": null,\n        \"partial\": true\n      },\n      \"worker_usage\": {\n        \"totals\": null,\n        \"partial\": true\n      },\n      \"validation_usage\": {\n        \"totals\": null,\n        \"partial\": true\n      },\n      \"known_tokens\": null,\n      \"token_history\": \"partial\",\n      \"possible_usage_overlap\": false,\n      \"badge\": \"C?% P? T?~\",\n      \"published\": false\n    }\n  ]\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/bin/fm-worker-resources.sh",
+      "--home",
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/.resource-cli-ktexfm6o",
+      "--sort",
+      "cpu"
+    ],
+    "code": 0,
+    "stdout": "Worker resources - 2026-09-07T16:35:59.015024+00:00\nSample 5.00s; CPU: % of one core; RAM: PSS (RSS in details).\nT~: incomplete token history; C~: partial CPU sample; ?: unknown; not a subscription bill.\nDisk order uses write bytes/s; shared services and remote/host/GPU work are excluded.\n\nunsupported  C?% P? T?~\n  RSS ?; disk R/W ?/? B/s; PIDs 0; PSS 0/0; churn 0; sample partial\n  Pi: unknown\n  validation: unknown\n  Pi recorded usage entries 0; missing/unreadable entries 0.\n  Validation coverage 0/0 returned calls; 0 active steps; totals can lag.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/bin/fm-worker-resources.sh",
+      "--home",
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/.resource-cli-ktexfm6o",
+      "--sort",
+      "ram"
+    ],
+    "code": 0,
+    "stdout": "Worker resources - 2026-09-07T16:36:04.077098+00:00\nSample 5.00s; CPU: % of one core; RAM: PSS (RSS in details).\nT~: incomplete token history; C~: partial CPU sample; ?: unknown; not a subscription bill.\nDisk order uses write bytes/s; shared services and remote/host/GPU work are excluded.\n\nunsupported  C?% P? T?~\n  RSS ?; disk R/W ?/? B/s; PIDs 0; PSS 0/0; churn 0; sample partial\n  Pi: unknown\n  validation: unknown\n  Pi recorded usage entries 0; missing/unreadable entries 0.\n  Validation coverage 0/0 returned calls; 0 active steps; totals can lag.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/bin/fm-worker-resources.sh",
+      "--home",
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/.resource-cli-ktexfm6o",
+      "--sort",
+      "disk"
+    ],
+    "code": 0,
+    "stdout": "Worker resources - 2026-09-07T16:36:09.141413+00:00\nSample 5.00s; CPU: % of one core; RAM: PSS (RSS in details).\nT~: incomplete token history; C~: partial CPU sample; ?: unknown; not a subscription bill.\nDisk order uses write bytes/s; shared services and remote/host/GPU work are excluded.\n\nunsupported  C?% P? T?~\n  RSS ?; disk R/W ?/? B/s; PIDs 0; PSS 0/0; churn 0; sample partial\n  Pi: unknown\n  validation: unknown\n  Pi recorded usage entries 0; missing/unreadable entries 0.\n  Validation coverage 0/0 returned calls; 0 active steps; totals can lag.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/bin/fm-worker-resources.sh",
+      "--home",
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/.resource-cli-ktexfm6o",
+      "--sort",
+      "tokens"
+    ],
+    "code": 0,
+    "stdout": "Worker resources - 2026-09-07T16:36:14.202031+00:00\nSample 5.00s; CPU: % of one core; RAM: PSS (RSS in details).\nT~: incomplete token history; C~: partial CPU sample; ?: unknown; not a subscription bill.\nDisk order uses write bytes/s; shared services and remote/host/GPU work are excluded.\n\nunsupported  C?% P? T?~\n  RSS ?; disk R/W ?/? B/s; PIDs 0; PSS 0/0; churn 0; sample partial\n  Pi: unknown\n  validation: unknown\n  Pi recorded usage entries 0; missing/unreadable entries 0.\n  Validation coverage 0/0 returned calls; 0 active steps; totals can lag.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/bin/fm-herdr-lab.sh",
+      "attach",
+      "default"
+    ],
+    "code": 1,
+    "stdout": "",
+    "stderr": "fm-herdr-lab: attach is restricted to fm-lab-resource-v5\n"
+  },
+  {
+    "command": [
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/bin/fm-herdr-lab.sh",
+      "attach",
+      "fm-lab-other"
+    ],
+    "code": 1,
+    "stdout": "",
+    "stderr": "fm-herdr-lab: attach is restricted to fm-lab-resource-v5\n"
+  },
+  {
+    "command": [
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/bin/fm-herdr-lab.sh",
+      "attach",
+      "fm-lab-resource-v5",
+      "--session",
+      "default"
+    ],
+    "code": 2,
+    "stdout": "",
+    "stderr": "Provision and operate an isolated Herdr lab session without risking the live\ndefault session.\n\nUsage:\n  fm-herdr-lab.sh name <label>\n  fm-herdr-lab.sh prepare <session>\n  fm-herdr-lab.sh provision <session>\n  fm-herdr-lab.sh run <session> <herdr arguments...>\n  fm-herdr-lab.sh stop <session>\n  fm-herdr-lab.sh teardown <session>\n  fm-herdr-lab.sh attach fm-lab-resource-v5\n\nSession names must begin with \"fm-lab-\" and can never be \"default\".\n"
+  },
+  {
+    "command": [
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/bin/fm-herdr-lab.sh",
+      "run",
+      "fm-lab-resource-v5",
+      "server",
+      "stop"
+    ],
+    "code": 1,
+    "stdout": "",
+    "stderr": "fm-herdr-lab: run forbids server operations; use provision for the named lab server\n"
+  },
+  {
+    "command": [
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1YB9X3BT3W5Z3P74AXW67PS/bin/fm-herdr-lab.sh",
+      "run",
+      "fm-lab-resource-v5",
+      "status",
+      "--session",
+      "default"
+    ],
+    "code": 1,
+    "stdout": "",
+    "stderr": "fm-herdr-lab: run forbids caller-supplied --session; the helper appends the lab session\n"
+  }
+]

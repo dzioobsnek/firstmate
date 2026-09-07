@@ -1,0 +1,29 @@
+{
+  "current_head": "09996b3019322a430552d69708077fa2aca3ef40",
+  "historical_head": "a46f9ff3df8124515a669968c45c22bbd3ec81e3",
+  "identical_tree": "e42b39b7604cbda94eb761c05b689dcd4eaef838",
+  "current_live": "CLI empty inventory, unsupported worker, config output, option rejection and helper refusal",
+  "historical_only": "Prior-run browser and terminal visuals; outer-worker native reviewer. None re-driven here.",
+  "reviewer": "Matching run/worktree/PID/start/cwd; 6177 input + 412 output + 20480 cache read + 0 cache write = 27069 actual tokens; duplicate/wrong-project exclusions and cleanup checked",
+  "browser": "Stable native Chromium descendants, CPU/PSS increase, shared exclusion, process-exit reduction and teardown checked",
+  "visuals": "Prior rendered terminal cell captures, not new screenshots; seeded round6 usage is synthetic",
+  "copied_artifacts": [
+    "round6-badges.svg",
+    "round6-popup.svg",
+    "round6-expiry.svg",
+    "round8-browser.png",
+    "round8-native-results.json",
+    "round9-reviewer-results.json",
+    "round9-reviewer-driver.py",
+    "round6-live-results.json",
+    "round5-results.json",
+    "round5-badges.txt",
+    "round5-popup.txt",
+    "round5-expiry.txt",
+    "round5-helper.json",
+    "round6-details-cpu.txt",
+    "round6-details-disk.txt",
+    "round6-details-ram.txt",
+    "round6-details-tokens.txt"
+  ]
+}

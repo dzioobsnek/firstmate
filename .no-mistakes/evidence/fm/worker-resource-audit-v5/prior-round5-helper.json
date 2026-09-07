@@ -1,0 +1,92 @@
+[
+  {
+    "args": [
+      "provision",
+      "fm-lab-resource-v5"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "run",
+      "fm-lab-resource-v5",
+      "workspace",
+      "create",
+      "--cwd",
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-visual/work",
+      "--label",
+      "resource-visual"
+    ],
+    "code": 0,
+    "stdout": "{\"id\":\"cli:workspace:create\",\"result\":{\"root_pane\":{\"agent_status\":\"unknown\",\"cwd\":\"/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-visual/work\",\"focused\":true,\"foreground_cwd\":\"/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-visual/work\",\"pane_id\":\"w1:p1\",\"revision\":0,\"scroll\":{\"max_offset_from_bottom\":0,\"offset_from_bottom\":0,\"viewport_rows\":40},\"tab_id\":\"w1:t1\",\"terminal_id\":\"term_65ae5503511761\",\"workspace_id\":\"w1\"},\"tab\":{\"agent_status\":\"unknown\",\"focused\":true,\"label\":\"1\",\"number\":1,\"pane_count\":1,\"tab_id\":\"w1:t1\",\"workspace_id\":\"w1\"},\"type\":\"workspace_created\",\"workspace\":{\"active_tab_id\":\"w1:t1\",\"agent_status\":\"unknown\",\"focused\":true,\"label\":\"resource-visual\",\"number\":1,\"pane_count\":1,\"tab_count\":1,\"workspace_id\":\"w1\"}}}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "run",
+      "fm-lab-resource-v5",
+      "pane",
+      "run",
+      "w1:p1",
+      "env PI_CODING_AGENT_DIR=/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-visual/pi PI_OFFLINE=1 PI_TELEMETRY=0 pi --offline --no-session --no-extensions --no-skills --no-prompt-templates --no-themes --no-context-files --no-approve"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "run",
+      "fm-lab-resource-v5",
+      "pane",
+      "report-agent",
+      "w1:p1",
+      "--source",
+      "herdr:pi",
+      "--agent",
+      "pi",
+      "--state",
+      "working",
+      "--seq",
+      "9"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "run",
+      "fm-lab-resource-v5",
+      "pane",
+      "report-agent-session",
+      "w1:p1",
+      "--source",
+      "herdr:pi",
+      "--agent",
+      "pi",
+      "--agent-session-id",
+      "visual",
+      "--session-start-source",
+      "startup",
+      "--agent-session-path",
+      "/home/mantas/.no-mistakes/worktrees/03875267bd10/01M1XXDCFPT5D3QR4TYSHQ4B70/.resource-visual/pi/visual.jsonl",
+      "--seq",
+      "10"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "teardown",
+      "fm-lab-resource-v5"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+]

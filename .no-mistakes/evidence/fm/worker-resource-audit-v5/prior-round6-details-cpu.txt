@@ -1,0 +1,17 @@
+Worker resources - 2026-09-07T14:22:30.431921+00:00
+Sample 5.01s; CPU: % of one core; RAM: PSS (RSS in details).
+T~: incomplete token history; C~: partial CPU sample; ?: unknown; not a subscription bill.
+Disk order uses write bytes/s; shared services and remote/host/GPU work are excluded.
+
+busy  C100% P112M T9.0K~
+  RSS 174M; disk R/W 0/0 B/s; PIDs 3; PSS 3/3; churn 0; sample observed trees
+  Pi: input=9000, output=10, cacheRead=20, cacheWrite=0
+  validation: unknown
+  Pi recorded usage entries 1; missing/unreadable entries 0.
+  Validation coverage 0/0 returned calls; 0 active steps; totals can lag.
+idle  C0% P112M T130~
+  RSS 174M; disk R/W 0/0 B/s; PIDs 3; PSS 3/3; churn 0; sample observed trees
+  Pi: input=100, output=10, cacheRead=20, cacheWrite=0
+  validation: unknown
+  Pi recorded usage entries 1; missing/unreadable entries 0.
+  Validation coverage 0/0 returned calls; 0 active steps; totals can lag.
