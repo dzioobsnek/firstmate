@@ -998,8 +998,8 @@ Observed output:
 
 `tests/fm-worker-resources.test.sh` additionally exercises real Linux child-process sampling and offline numeric-usage, ownership and metadata-publication guards.
 No model call or Herdr lifecycle operation is needed to refresh the read-only evidence.
-Live badge rendering and popup application are deliberately unverified until the operator reviews and adopts the opt-in configuration.
-Other backends remain unknown rows rather than falling back to a machine-wide process sweep; shared lifecycle and harness dispatch paths are unchanged.
+The read-only observation above does not establish badge rendering, popup behavior or expiry; isolated integration and delivery evidence belongs in the private task report or PR evidence, labeled with its collection run and collector.
+[`herdr-backend.md`](../herdr-backend.md#on-demand-worker-resources) owns presentation opt-in requirements and attribution limits.
 
 ## Zellij
 

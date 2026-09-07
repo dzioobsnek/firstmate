@@ -326,8 +326,9 @@ Python 3's standard library is required; no extra package or monitoring daemon i
 
 For opt-in presentation, the helper can print a suggested configuration fragment with a slightly wider sidebar, resource text beside `pi` on its existing secondary line, and a detail-report popup keybinding.
 Merge that fragment manually into the existing Herdr configuration after review, preserving any customized identity rows, names, status indicators and grouping.
-Sampling uses a fixed five-second interval. Only the explicit publish option writes display-only pane metadata, with a fixed 60-second expiry; it never controls agent lifecycle.
-The suggested sidebar width is 44 columns (maximum 52); adjust it only in the manually reviewed Herdr configuration.
+Sampling uses a fixed five-second interval.
+Only the explicit publish option writes display-only pane metadata, with a fixed 60-second expiry; it never controls agent lifecycle.
+The generated fragment owns the suggested width settings; adjust them only in the manually reviewed Herdr configuration.
 Expired or unpublished metadata leaves the resource text blank rather than presenting an old CPU rate as current.
 The popup itself remains read-only and samples again on demand.
 Narrow terminals can truncate the row normally; the detail report remains the full source of information.
