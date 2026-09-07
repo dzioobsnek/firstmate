@@ -167,14 +167,14 @@ class Resources(unittest.TestCase):
             return {"type": "pane_metadata_reported"}
         proc = r.Proc()
         with patch.object(r, "herdr", side_effect=fake), patch.object(proc, "identity", return_value=(9, 0, 0)):
-            self.assertTrue(r.publish(t, dict(badge="C1% P2M T3K~"), 60, proc))
+            self.assertTrue(r.publish(t, dict(badge="C1% P2M T3K~"), proc))
             self.assertEqual([c[:2] for c in calls],
                              [("pane", "process-info"), ("agent", "get"), ("pane", "report-metadata")])
             self.assertIn("--ttl-ms", calls[-1])
             self.assertIn("60000", calls[-1])
             self.file.write_text(self.file.read_text() + "spawn_gen=replaced\n")
             calls.clear()
-            self.assertFalse(r.publish(t, dict(badge="old"), 60, proc))
+            self.assertFalse(r.publish(t, dict(badge="old"), proc))
             self.assertEqual(calls, [])
 
     def test_config_cli_never_contacts_herdr_or_writes_config(self):
@@ -185,9 +185,16 @@ class Resources(unittest.TestCase):
         self.assertIn('type = "popup"', p.stdout)
         self.assertIn("sidebar_width = 44", p.stdout)
         self.assertFalse((self.home / "config").exists())
-        p = subprocess.run([sys.executable, str(ROOT / "bin/fm-worker-resources.py"),
-                            "--home", str(self.home), "--interval", "nan"], capture_output=True, text=True)
-        self.assertNotEqual(p.returncode, 0)
+
+    def test_cli_rejects_removed_tuning_options(self):
+        for option, value in (("--interval", "2"), ("--ttl", "30"), ("--sidebar-width", "48")):
+            with self.subTest(option=option):
+                p = subprocess.run([sys.executable, str(ROOT / "bin/fm-worker-resources.py"),
+                                    "--home", str(self.home), option, value],
+                                   capture_output=True, text=True)
+                self.assertEqual(p.returncode, 2)
+                self.assertIn("unrecognized arguments", p.stderr)
+                self.assertEqual(p.stdout, "")
 
     @unittest.skipUnless(sys.platform.startswith("linux"), "Linux proc only")
     def test_real_child_process_sample_and_no_publish_by_default(self):
@@ -203,8 +210,8 @@ class Resources(unittest.TestCase):
             task.update(roots={child.pid: p.identity(child.pid)[0]}, reference=None,
                         worker_usage=dict(totals=None), validation_usage=dict(totals=None))
         with patch.object(r, "bind", side_effect=bind), patch.object(r, "publish") as publish:
-            report = r.collect(self.home, 1, self.sessions, self.home / "missing")
-        self.assertGreaterEqual(report["interval_seconds"], 1)
+            report = r.collect(self.home, self.sessions, self.home / "missing")
+        self.assertGreaterEqual(report["interval_seconds"], 5)
         self.assertEqual(report["rows"][0]["metrics"]["pids"], 1)
         self.assertGreater(report["rows"][0]["metrics"]["rss_bytes"], 0)
         publish.assert_not_called()
@@ -228,7 +235,7 @@ class Resources(unittest.TestCase):
         with patch.object(r, "bind", side_effect=bind), \
                 patch.object(r.Proc, "snapshot", return_value=({123: self.metric()}, False)), \
                 patch.object(r.time, "sleep"):
-            out = r.collect(self.home, 1, self.sessions, self.home / "missing")
+            out = r.collect(self.home, self.sessions, self.home / "missing")
         self.assertEqual(out["shared_pids_excluded"], 1)
         for row in out["rows"]:
             self.assertEqual(row["metrics"]["pids"], 0)

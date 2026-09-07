@@ -2,8 +2,8 @@
 # fm-worker-resources.sh - on-demand Linux worker resource report.
 #
 # Usage: fm-worker-resources.sh --home <FM_HOME> [--json] [--sort cpu|ram|tokens|disk]
-#        [--interval <seconds>] [--publish] [--ttl <seconds>] [--wait]
-#        fm-worker-resources.sh --home <FM_HOME> --herdr-config [--sidebar-width <cols>]
+#        [--publish] [--wait]
+#        fm-worker-resources.sh --home <FM_HOME> --herdr-config
 #
 # FM_HOME can replace --home. No home is inferred from the current directory.
 # Python's standard library supplies the bounded sampler, read-only usage readers,

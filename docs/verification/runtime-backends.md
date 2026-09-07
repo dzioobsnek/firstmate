@@ -980,7 +980,7 @@ Verified 2026-09-07 on Linux with Herdr 0.8.2 client/server (protocol 20), Pi 0.
 With `FM_HOME` explicitly selecting the authorized owning home, the command below sampled four recorded direct reports without publishing metadata or changing configuration:
 
 ```sh
-bin/fm-worker-resources.sh --interval 2 --json |
+bin/fm-worker-resources.sh --json |
   jq '{schema, workers: (.rows | length), readonly: ([.rows[].published] | all(. == false)), pss_observed: ([.rows[].metrics.pss_bytes] | all(. != null)), pi_usage_observed: ([.rows[].worker_usage.totals] | all(. != null))}'
 ```
 

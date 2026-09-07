@@ -376,7 +376,7 @@ def output_row(task, metrics):
                 badge=None, published=False)
 
 
-def publish(task, row, ttl, proc):
+def publish(task, row, proc):
     """Verify current identity before a display-only write. No lifecycle calls."""
     try:
         if task["file"].read_text() != task["original"] or not task["roots"] or not task["reference"]:
@@ -395,13 +395,13 @@ def publish(task, row, ttl, proc):
             return False
         result = herdr(task, "pane", "report-metadata", task["pane"],
                        "--source", SOURCE, "--agent", "pi", "--token", "fm_resources=" + row["badge"],
-                       "--ttl-ms", str(ttl * 1000), "--seq", str(time.time_ns()))
+                       "--ttl-ms", "60000", "--seq", str(time.time_ns()))
         return bool(result)
     except (OSError, AttributeError, TypeError):
         return False
 
 
-def collect(home, interval, sessions_root, db_path, publish_badges=False, ttl=60):
+def collect(home, sessions_root, db_path, publish_badges=False):
     started = utc()
     proc = Proc()
     workers = tasks(home)
@@ -421,7 +421,7 @@ def collect(home, interval, sessions_root, db_path, publish_badges=False, ttl=60
     a0 = time.monotonic()
     a = [proc.snapshot(t["roots"]) for t in workers]
     a1 = time.monotonic()
-    time.sleep(interval)
+    time.sleep(5)
     b0 = time.monotonic()
     b = [proc.snapshot(t["roots"]) for t in workers]
     b1 = time.monotonic()
@@ -441,7 +441,7 @@ def collect(home, interval, sessions_root, db_path, publish_badges=False, ttl=60
         row = output_row(t, m)
         row["badge"] = badge(row)
         if publish_badges:
-            row["published"] = publish(t, row, ttl, proc)
+            row["published"] = publish(t, row, proc)
         rows.append(row)
     return dict(schema=1, started_at=started, finished_at=utc(), interval_seconds=dt,
                 scan_seconds=(a1 - a0) + (b1 - b0), shared_pids_excluded=len(shared),
@@ -485,13 +485,13 @@ def text_report(report, sort_key):
     return "\n".join(lines)
 
 
-def config(home, width):
+def config(home):
     entry = Path(__file__).resolve().with_suffix(".sh")
     cmd = " ".join(shlex.quote(str(x)) for x in (entry, "--home", home, "--wait"))
     return f"""# Suggested fragment only: merge manually; preserve existing custom identity rows.
 [ui]
-sidebar_width = {width}
-sidebar_max_width = {width + 8}
+sidebar_width = 44
+sidebar_max_width = 52
 
 [ui.sidebar.agents]
 rows = [["state_icon", "workspace", "tab"], ["agent", "$fm_resources"]]
@@ -503,39 +503,34 @@ command = {json.dumps(cmd)}
 width = "90%"
 height = "80%"
 # The popup is read-only. Refresh badges separately with --publish.
-# Badges expire after --ttl seconds; blank means not sampled or stale.
+# Badges expire after 60 seconds; blank means not sampled or stale.
 """
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--home", default=os.environ.get("FM_HOME"), help="Explicit owning Firstmate home")
-    parser.add_argument("--interval", type=float, default=5, help="CPU/I/O sample seconds (1..30; default 5)")
     parser.add_argument("--json", action="store_true", help="Numeric/identity report on stdout")
     parser.add_argument("--sort", choices=("cpu", "ram", "tokens", "disk"), default="cpu")
     parser.add_argument("--publish", action="store_true", help="Opt in to expiring display-only Herdr Pi badges")
-    parser.add_argument("--ttl", type=int, default=60, help="Badge expiry seconds (5..300; default 60)")
     parser.add_argument("--herdr-config", action="store_true", help="Print opt-in config only; never apply it")
-    parser.add_argument("--sidebar-width", type=int, default=44, help="Suggested sidebar columns (28..80)")
     parser.add_argument("--wait", action="store_true", help="Keep detail popup open until Enter (TTY only)")
     args = parser.parse_args()
     if not args.home:
         parser.error("--home or FM_HOME is required")
-    if not 1 <= args.interval <= 30 or not 5 <= args.ttl <= 300 or not 28 <= args.sidebar_width <= 80:
-        parser.error("interval, ttl or sidebar width is out of range")
     home = Path(args.home).resolve()
     if not (home / "state").is_dir():
         parser.error("selected home has no state directory")
     if args.herdr_config:
         if args.publish:
             parser.error("--herdr-config cannot publish")
-        print(config(home, args.sidebar_width))
+        print(config(home))
         return 0
     if not sys.platform.startswith("linux"):
         parser.error("sampling is Linux-only; no Windows host or GPU measurements")
-    report = collect(home, args.interval, Path.home() / ".pi/agent/sessions",
+    report = collect(home, Path.home() / ".pi/agent/sessions",
                      Path(os.environ.get("NM_HOME", str(Path.home() / ".no-mistakes"))) / "state.sqlite",
-                     args.publish, args.ttl)
+                     args.publish)
     print(json.dumps(report, indent=2, allow_nan=False) if args.json else text_report(report, args.sort))
     if args.wait and sys.stdin.isatty():
         try:
