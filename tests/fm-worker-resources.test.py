@@ -157,21 +157,29 @@ class Resources(unittest.TestCase):
         t = r.tasks(self.home)[0]
         t.update(roots={123: 9}, shell_pid=123, reference="session.jsonl")
         calls = []
-        def fake(task, *args):
+        def fake(command, **kwargs):
+            self.assertEqual(command[0], "herdr")
+            self.assertEqual(command[-2:], ["--session", t["session"]])
+            args = tuple(command[1:-2])
             calls.append(args)
             if args[:2] == ("pane", "process-info"):
-                return dict(process_info=dict(pane_id=t["pane"], shell_pid=123))
-            if args[:2] == ("agent", "get"):
-                return dict(agent=dict(pane_id=t["pane"], agent="pi",
+                result = dict(process_info=dict(pane_id=t["pane"], shell_pid=123))
+            elif args[:2] == ("agent", "get"):
+                result = dict(agent=dict(pane_id=t["pane"], agent="pi",
                     agent_session=dict(kind="path", value=t["reference"])))
-            return {"type": "pane_metadata_reported"}
+            else:
+                return subprocess.CompletedProcess(command, publication_status, stdout=b"")
+            return subprocess.CompletedProcess(command, 0, stdout=json.dumps({"result": result}).encode())
         proc = r.Proc()
-        with patch.object(r, "herdr", side_effect=fake), patch.object(proc, "identity", return_value=(9, 0, 0)):
+        publication_status = 0
+        with patch.object(r.subprocess, "run", side_effect=fake), patch.object(proc, "identity", return_value=(9, 0, 0)):
             self.assertTrue(r.publish(t, dict(badge="C1% P2M T3K~"), proc))
             self.assertEqual([c[:2] for c in calls],
                              [("pane", "process-info"), ("agent", "get"), ("pane", "report-metadata")])
             self.assertIn("--ttl-ms", calls[-1])
             self.assertIn("60000", calls[-1])
+            publication_status = 1
+            self.assertFalse(r.publish(t, dict(badge="C1% P2M T3K~"), proc))
             self.file.write_text(self.file.read_text() + "spawn_gen=replaced\n")
             calls.clear()
             self.assertFalse(r.publish(t, dict(badge="old"), proc))

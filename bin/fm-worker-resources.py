@@ -393,10 +393,12 @@ def publish(task, row, proc):
         if (agent.get("pane_id") != task["pane"] or agent.get("agent") != "pi" or
                 ref.get("kind") != "path" or ref.get("value") != task["reference"]):
             return False
-        result = herdr(task, "pane", "report-metadata", task["pane"],
+        # report-metadata may succeed without emitting a JSON response.
+        result = command(["herdr", "pane", "report-metadata", task["pane"],
                        "--source", SOURCE, "--agent", "pi", "--token", "fm_resources=" + row["badge"],
-                       "--ttl-ms", "60000", "--seq", str(time.time_ns()))
-        return bool(result)
+                       "--ttl-ms", "60000", "--seq", str(time.time_ns()),
+                       "--session", task["session"]])
+        return result is not None
     except (OSError, AttributeError, TypeError):
         return False
 
