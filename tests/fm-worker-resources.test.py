@@ -157,24 +157,32 @@ class Resources(unittest.TestCase):
         t = r.tasks(self.home)[0]
         t.update(roots={123: 9}, shell_pid=123, reference="session.jsonl")
         calls = []
-        def fake(task, *args):
+        def fake(command, **kwargs):
+            self.assertEqual(command[0], "herdr")
+            self.assertEqual(command[-2:], ["--session", t["session"]])
+            args = tuple(command[1:-2])
             calls.append(args)
             if args[:2] == ("pane", "process-info"):
-                return dict(process_info=dict(pane_id=t["pane"], shell_pid=123))
-            if args[:2] == ("agent", "get"):
-                return dict(agent=dict(pane_id=t["pane"], agent="pi",
+                result = dict(process_info=dict(pane_id=t["pane"], shell_pid=123))
+            elif args[:2] == ("agent", "get"):
+                result = dict(agent=dict(pane_id=t["pane"], agent="pi",
                     agent_session=dict(kind="path", value=t["reference"])))
-            return {"type": "pane_metadata_reported"}
+            else:
+                return subprocess.CompletedProcess(command, publication_status, stdout=b"")
+            return subprocess.CompletedProcess(command, 0, stdout=json.dumps({"result": result}).encode())
         proc = r.Proc()
-        with patch.object(r, "herdr", side_effect=fake), patch.object(proc, "identity", return_value=(9, 0, 0)):
-            self.assertTrue(r.publish(t, dict(badge="C1% P2M T3K~"), 60, proc))
+        publication_status = 0
+        with patch.object(r.subprocess, "run", side_effect=fake), patch.object(proc, "identity", return_value=(9, 0, 0)):
+            self.assertTrue(r.publish(t, dict(badge="C1% P2M T3K~"), proc))
             self.assertEqual([c[:2] for c in calls],
                              [("pane", "process-info"), ("agent", "get"), ("pane", "report-metadata")])
             self.assertIn("--ttl-ms", calls[-1])
             self.assertIn("60000", calls[-1])
+            publication_status = 1
+            self.assertFalse(r.publish(t, dict(badge="C1% P2M T3K~"), proc))
             self.file.write_text(self.file.read_text() + "spawn_gen=replaced\n")
             calls.clear()
-            self.assertFalse(r.publish(t, dict(badge="old"), 60, proc))
+            self.assertFalse(r.publish(t, dict(badge="old"), proc))
             self.assertEqual(calls, [])
 
     def test_config_cli_never_contacts_herdr_or_writes_config(self):
@@ -185,9 +193,16 @@ class Resources(unittest.TestCase):
         self.assertIn('type = "popup"', p.stdout)
         self.assertIn("sidebar_width = 44", p.stdout)
         self.assertFalse((self.home / "config").exists())
-        p = subprocess.run([sys.executable, str(ROOT / "bin/fm-worker-resources.py"),
-                            "--home", str(self.home), "--interval", "nan"], capture_output=True, text=True)
-        self.assertNotEqual(p.returncode, 0)
+
+    def test_cli_rejects_removed_tuning_options(self):
+        for option, value in (("--interval", "2"), ("--ttl", "30"), ("--sidebar-width", "48")):
+            with self.subTest(option=option):
+                p = subprocess.run([sys.executable, str(ROOT / "bin/fm-worker-resources.py"),
+                                    "--home", str(self.home), option, value],
+                                   capture_output=True, text=True)
+                self.assertEqual(p.returncode, 2)
+                self.assertIn("unrecognized arguments", p.stderr)
+                self.assertEqual(p.stdout, "")
 
     @unittest.skipUnless(sys.platform.startswith("linux"), "Linux proc only")
     def test_real_child_process_sample_and_no_publish_by_default(self):
@@ -203,8 +218,8 @@ class Resources(unittest.TestCase):
             task.update(roots={child.pid: p.identity(child.pid)[0]}, reference=None,
                         worker_usage=dict(totals=None), validation_usage=dict(totals=None))
         with patch.object(r, "bind", side_effect=bind), patch.object(r, "publish") as publish:
-            report = r.collect(self.home, 1, self.sessions, self.home / "missing")
-        self.assertGreaterEqual(report["interval_seconds"], 1)
+            report = r.collect(self.home, self.sessions, self.home / "missing")
+        self.assertGreaterEqual(report["interval_seconds"], 5)
         self.assertEqual(report["rows"][0]["metrics"]["pids"], 1)
         self.assertGreater(report["rows"][0]["metrics"]["rss_bytes"], 0)
         publish.assert_not_called()
@@ -228,7 +243,7 @@ class Resources(unittest.TestCase):
         with patch.object(r, "bind", side_effect=bind), \
                 patch.object(r.Proc, "snapshot", return_value=({123: self.metric()}, False)), \
                 patch.object(r.time, "sleep"):
-            out = r.collect(self.home, 1, self.sessions, self.home / "missing")
+            out = r.collect(self.home, self.sessions, self.home / "missing")
         self.assertEqual(out["shared_pids_excluded"], 1)
         for row in out["rows"]:
             self.assertEqual(row["metrics"]["pids"], 0)
