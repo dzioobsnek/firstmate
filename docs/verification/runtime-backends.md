@@ -974,6 +974,33 @@ FM_AFK_PI_HERDR_E2E=1 HERDR_LAB_HELPER=bin/fm-herdr-lab.sh \
 Observed guarantees: pending composer input refused injection and raised one alert; idle Pi accepted one marked escalation; the return gate refused ordinary work while a live blocker remained; resolving the blocker allowed the return flow.
 The dedicated Herdr daemon workspace topology is covered by `tests/fm-afk-launch.test.sh` and preserves the captain tab's pane count.
 
+### On-demand resource reads
+
+Verified 2026-09-07 on Linux with Herdr 0.8.2 client/server (protocol 20), Pi 0.85.1 and no-mistakes 1.68.0.
+With `FM_HOME` explicitly selecting the authorized owning home, the command below sampled four recorded direct reports without publishing metadata or changing configuration:
+
+```sh
+bin/fm-worker-resources.sh --json |
+  jq '{schema, workers: (.rows | length), readonly: ([.rows[].published] | all(. == false)), pss_observed: ([.rows[].metrics.pss_bytes] | all(. != null)), pi_usage_observed: ([.rows[].worker_usage.totals] | all(. != null))}'
+```
+
+Observed output:
+
+```json
+{
+  "schema": 1,
+  "workers": 4,
+  "readonly": true,
+  "pss_observed": true,
+  "pi_usage_observed": true
+}
+```
+
+`tests/fm-worker-resources.test.sh` additionally exercises real Linux child-process sampling and offline numeric-usage, ownership and metadata-publication guards.
+No model call or Herdr lifecycle operation is needed to refresh the read-only evidence.
+The read-only observation above does not establish badge rendering, popup behavior or expiry; isolated integration and delivery evidence belongs in the private task report or PR evidence, labeled with its collection run and collector.
+[`herdr-backend.md`](../herdr-backend.md#on-demand-worker-resources) owns presentation opt-in requirements and attribution limits.
+
 ## Zellij
 
 The current compatibility floor and latest verification are Zellij 0.44.0 with `jq` on macOS aarch64.

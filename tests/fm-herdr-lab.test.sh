@@ -39,7 +39,8 @@ case "$1 ${2:-}" in
       running=false
       [ "$lab_state" = running ] && running=true
       jq -nc --arg socket "$default_socket" --arg name "$session" --argjson running "$running" \
-        '{sessions:[{default:true,name:"default",running:true,socket_path:$socket},{default:false,name:$name,running:$running,socket_path:("/tmp/" + $name + ".sock")}]}'
+        --argjson default "${FM_FAKE_HERDR_LAB_DEFAULT:-false}" \
+        '{sessions:[{default:true,name:"default",running:true,socket_path:$socket},{default:$default,name:$name,running:$running,socket_path:("/tmp/" + $name + ".sock")}]}'
     fi
     ;;
   "server --session")
@@ -58,6 +59,14 @@ case "$1 ${2:-}" in
   "session stop")
     [ "$3" = "$session" ] || exit 91
     printf '%s\n' stopped > "$state/$session"
+    ;;
+  "--session fm-lab-resource-v5")
+    [ "$lab_state" = running ] || exit 95
+    printf '%s\n' "$session" > "$state/attached"
+    if [ "${FM_FAKE_HERDR_ATTACH_CHANGE_DEFAULT:-}" = 1 ]; then
+      printf '%s\n' '/changed/default.sock' > "$state/default-socket"
+    fi
+    exit "${FM_FAKE_HERDR_ATTACH_STATUS:-0}"
     ;;
   "session delete")
     [ "$3" = "$session" ] || exit 92
@@ -82,6 +91,9 @@ run_with_fake() {
     FM_FAKE_HERDR_SERVER_DELAY="${FM_FAKE_HERDR_SERVER_DELAY:-0}" \
     FM_FAKE_HERDR_FAST_POLL="${FM_FAKE_HERDR_FAST_POLL:-}" \
     FM_FAKE_HERDR_DELETE_FAIL="${FM_FAKE_HERDR_DELETE_FAIL:-}" \
+    FM_FAKE_HERDR_ATTACH_STATUS="${FM_FAKE_HERDR_ATTACH_STATUS:-0}" \
+    FM_FAKE_HERDR_ATTACH_CHANGE_DEFAULT="${FM_FAKE_HERDR_ATTACH_CHANGE_DEFAULT:-}" \
+    FM_FAKE_HERDR_LAB_DEFAULT="${FM_FAKE_HERDR_LAB_DEFAULT:-false}" \
     FM_HERDR_LAB_STATE_DIR="$TRIPWIRES" \
     "$@"
 }
@@ -234,6 +246,45 @@ SH
   pass "fm-herdr-lab: timed-out provisioning cancels the launch before teardown"
 }
 
+test_resource_lab_attachment() {
+  local name=fm-lab-resource-v5 status=0 target
+  for target in default fm-lab-other "$name"; do
+    run_with_fake bash "$ROOT/bin/fm-herdr-lab.sh" attach "$target" >/dev/null 2>&1 && fail "unowned attachment accepted: $target"
+  done
+  assert_absent "$FAKE_STATE/attached" "refused attachment reached client"
+  run_with_fake fm_herdr_lab_provision "$name" || fail "attachment fixture provision failed"
+  run_with_fake bash "$ROOT/bin/fm-herdr-lab.sh" attach "$name" --session default >/dev/null 2>&1 \
+    && fail "attachment accepted extra arguments"
+  FM_FAKE_HERDR_LAB_DEFAULT=true run_with_fake bash "$ROOT/bin/fm-herdr-lab.sh" attach "$name" >/dev/null 2>&1 \
+    && fail "attachment accepted default-marked lab"
+  printf '%s\n' '/changed/default.sock' > "$FAKE_STATE/default-socket"
+  run_with_fake bash "$ROOT/bin/fm-herdr-lab.sh" attach "$name" >/dev/null 2>&1 \
+    && fail "attachment ignored changed tripwire"
+  assert_absent "$FAKE_STATE/attached" "unsafe attachment reached client"
+  printf '%s\n' '/home/test/.config/herdr/herdr.sock' > "$FAKE_STATE/default-socket"
+  run_with_fake bash "$ROOT/bin/fm-herdr-lab.sh" attach "$name" || fail "guarded attachment failed"
+  [ "$(cat "$FAKE_STATE/attached")" = "$name" ] || fail "attached to wrong session"
+  FM_FAKE_HERDR_ATTACH_STATUS=7 run_with_fake bash "$ROOT/bin/fm-herdr-lab.sh" attach "$name" || status=$?
+  expect_code 7 "$status" "attachment must preserve client failure"
+  status=0
+  FM_FAKE_HERDR_ATTACH_CHANGE_DEFAULT=1 run_with_fake bash "$ROOT/bin/fm-herdr-lab.sh" attach "$name" >/dev/null 2>&1 || status=$?
+  expect_code 1 "$status" "attachment must check tripwire after client exits"
+  assert_present "$TRIPWIRES/$name.fleet-state.json" "attachment removed tripwire"
+  printf '%s\n' '/home/test/.config/herdr/herdr.sock' > "$FAKE_STATE/default-socket"
+  rm -f "$FAKE_STATE/attached"
+  run_with_fake fm_herdr_lab_stop "$name" || fail "fixture stop failed"
+  run_with_fake bash "$ROOT/bin/fm-herdr-lab.sh" attach "$name" >/dev/null 2>&1 \
+    && fail "attachment accepted stopped lab"
+  assert_absent "$FAKE_STATE/attached" "stopped lab reached client"
+  run_with_fake fm_herdr_lab_teardown "$name" || fail "attachment fixture teardown failed"
+  pass "fm-herdr-lab: resource client attachment is scoped, owned, and tripwire guarded"
+}
+
+if [ "${1:-}" = attachment ]; then
+  test_resource_lab_attachment
+  exit 0
+fi
+
 test_refuses_unsafe_names
 test_provision_run_and_guarded_teardown
 test_missing_tripwire_blocks_destruction
@@ -241,3 +292,4 @@ test_changed_default_trips_after_teardown
 test_stopped_owned_lab_can_reprovision
 test_failed_delete_retains_tripwire
 test_timed_out_provision_cancels_late_launch
+test_resource_lab_attachment

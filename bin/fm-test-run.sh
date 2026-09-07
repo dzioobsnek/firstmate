@@ -272,6 +272,7 @@ family_for_basename() {
     fm-supervision-instructions.test.sh|fm-task-delivery.test.sh|\
     fm-tmux-submit-busy.test.sh|fm-trace-context-lib.test.sh|\
     fm-transition-lib.test.sh|\
+    fm-worker-resources.test.sh|\
     fm-test-run.test.sh|fm-test-isolation-proof.test.sh)
       printf '%s\n' pure-contract-unit
       ;;
@@ -579,7 +580,7 @@ list_portable_serial() {
 
 # Measured portable-serial script durations in milliseconds, from the CI timing
 # artifacts recorded in docs/fm-test-portable-shards.md. Each value is the
-# slowest of several green runs, so the balance holds on a slow runner rather
+# slowest retained successful script measurement, so balance holds on a slow runner rather
 # than only on the fastest one measured. These are balance hints only: the shard
 # partition stays complete and disjoint whatever they say, so a stale hint costs
 # balance rather than coverage. That doc owns the refresh procedure.
@@ -599,7 +600,7 @@ tests/fm-backend.test.sh 20061
 tests/fm-backlog-atomicity.test.sh 122256
 tests/fm-backlog-handoff.test.sh 52291
 tests/fm-bearings-board-render.test.sh 1528
-tests/fm-bearings-board.test.sh 4195
+tests/fm-bearings-board.test.sh 55366
 tests/fm-bearings-snapshot.test.sh 79954
 tests/fm-bootstrap-network-parallel.test.sh 8214
 tests/fm-bootstrap.test.sh 25208
@@ -650,7 +651,7 @@ tests/fm-opencode-primary-live-e2e.test.sh 21
 tests/fm-operational-input.test.sh 231
 tests/fm-peek-remote.test.sh 1018
 tests/fm-pending-reply.test.sh 24679
-tests/fm-pi-branch-extension.test.sh 22239
+tests/fm-pi-branch-extension.test.sh 169847
 tests/fm-pi-branch-live-e2e.test.sh 56
 tests/fm-pi-branch-responsiveness-live-e2e.test.sh 21
 tests/fm-pi-primary-live-e2e.test.sh 20
@@ -725,7 +726,7 @@ tests/fm-wake-queue.test.sh 56674
 tests/fm-watch-arm.test.sh 58528
 tests/fm-watch-checkpoint.test.sh 5779
 tests/fm-watch-recovery-loop.test.sh 58731
-tests/fm-watch-triage.test.sh 262626
+tests/fm-watch-triage.test.sh 496143
 tests/fm-watcher-lock.test.sh 88554
 EOF
 }
@@ -1206,6 +1207,9 @@ families_for_unmapped_bin() {
 families_for_changed_path() {
   local path=$1 fixture_ref
   case "$path" in
+    bin/fm-worker-resources.sh|bin/fm-worker-resources.py|tests/fm-worker-resources.test.py)
+      printf '%s\n' "__script__:fm-worker-resources.test.sh"
+      ;;
     tests/fm-backend-herdr-eventwait.test.py)
       printf '%s\n' real-herdr-gated
       printf '%s\n' backend-dispatch

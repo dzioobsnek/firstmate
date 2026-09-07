@@ -9,6 +9,7 @@
 #   fm-herdr-lab.sh run <session> <herdr arguments...>
 #   fm-herdr-lab.sh stop <session>
 #   fm-herdr-lab.sh teardown <session>
+#   fm-herdr-lab.sh attach fm-lab-resource-v5
 #
 # Session names must begin with "fm-lab-" and can never be "default".
 # The name command sanitizes the label, caps it at 16 characters, and appends
@@ -23,6 +24,10 @@
 # destructive call.
 # Provision records the running default session as a fleet-state tripwire and
 # teardown requires that record to be identical afterward.
+# Attach opens only the already-provisioned resource lab's full terminal client;
+# capture its terminal externally and detach normally, without stopping the lab.
+# It checks ownership, the default tripwire, and refuse-default before attachment,
+# then rechecks the tripwire after the client exits; no client options are accepted.
 set -u
 
 fm_herdr_lab_error() {
@@ -241,6 +246,23 @@ fm_herdr_lab_verify_tripwire() { # <session>
   rm -f "$tripwire"
 }
 
+fm_herdr_lab_attach() { # <session>
+  local name=$1 status=0
+  [ "$name" = fm-lab-resource-v5 ] || {
+    fm_herdr_lab_error "attach is restricted to fm-lab-resource-v5"
+    return 1
+  }
+  fm_herdr_lab_check_tripwire "$name" || return 1
+  fm_herdr_lab_raw "$name" status --json | jq -e '.server.running == true' >/dev/null || {
+    fm_herdr_lab_error "attach requires an already-running resource lab"
+    return 1
+  }
+  fm_herdr_lab_refuse_if_default "$name" || return 1
+  fm_herdr_lab_raw "$name" || status=$?
+  fm_herdr_lab_check_tripwire "$name" || return 1
+  return "$status"
+}
+
 fm_herdr_lab_stop() { # <session>
   local name=$1 tripwire
   fm_herdr_lab_validate_name "$name" || return 1
@@ -299,7 +321,7 @@ fm_herdr_lab_name() { # <label>
 }
 
 fm_herdr_lab_usage() {
-  sed -n '2,13p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'
+  sed -n '2,14p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'
 }
 
 fm_herdr_lab_main() {
@@ -325,6 +347,10 @@ fm_herdr_lab_main() {
     stop)
       [ "$#" -eq 2 ] || { fm_herdr_lab_usage >&2; return 2; }
       fm_herdr_lab_stop "$2"
+      ;;
+    attach)
+      [ "$#" -eq 2 ] || { fm_herdr_lab_usage >&2; return 2; }
+      fm_herdr_lab_attach "$2"
       ;;
     teardown)
       [ "$#" -eq 2 ] || { fm_herdr_lab_usage >&2; return 2; }

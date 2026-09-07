@@ -317,6 +317,34 @@ Its before/after tripwire requires the live default-session snapshot to remain b
 The helper's header and `--help` own exact commands.
 Tests use thin compatibility wrappers in `tests/herdr-test-safety.sh` and never duplicate the destructive policy.
 
+## On-demand worker resources
+
+`bin/fm-worker-resources.sh --help` owns the optional Linux sampler's command interface.
+It produces a one-shot report from this home's recorded direct reports, exact Herdr pane identities, attributable process descendants, current Pi sessions and known no-mistakes runs.
+The default only prints a report; it never changes the sidebar, configuration, processes or model sessions.
+Python 3's standard library is required; no extra package or monitoring daemon is installed.
+
+For opt-in presentation, the helper can print a suggested configuration fragment with a slightly wider sidebar, resource text beside `pi` on its existing secondary line, and a detail-report popup keybinding.
+Merge that fragment manually into the existing Herdr configuration after review, preserving any customized identity rows, names, status indicators and grouping.
+Sampling uses a fixed five-second interval.
+Only the explicit publish option writes display-only pane metadata, with a fixed 60-second expiry; it never controls agent lifecycle.
+The generated fragment owns the suggested width settings; adjust them only in the manually reviewed Herdr configuration.
+Expired or unpublished metadata leaves the resource text blank rather than presenting an old CPU rate as current.
+The popup itself remains read-only and samples again on demand.
+Narrow terminals can truncate the row normally; the detail report remains the full source of information.
+
+CPU is a bounded sample expressed as a percentage of one logical core, and RAM ranking uses PSS rather than double-counting RSS shared pages.
+I/O is Linux process storage accounting, not device-wide disk load; rates are withheld when observed process churn makes child-to-parent accounting ambiguous.
+Missing permissions, unsupported backends or unreadable sources remain unknown rather than zero.
+Shared processes are excluded from per-worker charges, and detached browsers, shared services, remote CI, Windows host resources and GPU memory are not promised as attributed consumption.
+
+The token badge is a known subtotal marked `~` for incomplete task history, not a subscription bill or a complete restart ledger.
+Details separate current-session Pi input/output/cache usage from known returned validation invocations, preserving Pi's cache-exclusive input and Codex's cache-inclusive input semantics.
+Copied fork history is not claimed as new task consumption, and nested tool usage is not blindly added to a potentially overlapping validation subtotal.
+Unfinished validation invocations can lag, and unknown adapters or missing token fields reduce coverage explicitly.
+The helper never reads prompts into its output, loads or resumes a Pi session, calls a model, or changes no-mistakes' own telemetry normalization.
+`tests/fm-worker-resources.test.sh` covers numeric-only extraction, ownership, cache semantics, missing data, bounded real-process sampling and publication guards without a Herdr lifecycle operation.
+
 ## Active limits
 
 - Presentation ordering needs protocol 16 and Python and is best-effort only.
